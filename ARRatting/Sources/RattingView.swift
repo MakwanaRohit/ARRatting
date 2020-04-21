@@ -9,13 +9,29 @@
 import SwiftUI
 
 struct RattingView: View {
+    
+    @Binding var rating: Int
+    private let maximumRating = 5
+    var offColor = Color.gray
+    var onColor = Color.black.opacity(0.8)
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        HStack {
+            ForEach(1..<maximumRating + 1) { number in
+                Image(systemName: "star.fill")
+                    .foregroundColor(number > self.rating ? self.offColor : self.onColor)
+                    .onTapGesture {
+                        self.rating = number
+                }
+            }
+        }
     }
 }
 
+
 struct RattingView_Previews: PreviewProvider {
     static var previews: some View {
-        RattingView()
+        RattingView(rating: .constant(3))
     }
 }

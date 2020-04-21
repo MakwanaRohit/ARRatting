@@ -9,13 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var rating: Int
     var body: some View {
-        Text("Hello, World!")
+        RattingView(rating: $rating)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(rating: 3)
     }
 }
